@@ -1,0 +1,13 @@
+.wrapper {
+  height: var(--default-layout-height);
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: var(--default-layout-width);
+  background-color: #ccc;
+}

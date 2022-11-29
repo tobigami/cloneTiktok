@@ -6,7 +6,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>clone TikTok</h1>
         <Routes>
           {publicRoutes.map((route, index) => {
             let Layout = DefaultLayout;

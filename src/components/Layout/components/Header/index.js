@@ -4,6 +4,7 @@ import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import { Wrapper as WrapperPopper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
+import Button from "~/components/Button";
 
 // import icon
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -58,7 +59,17 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx("actions")}>this is actions</div>
+        <div className={cx("actions")}>
+          <Button text target="_blank">
+            Upload
+          </Button>
+          <Button round outline target="_blank">
+            Log In
+          </Button>
+          <Button className={cx("custom-login")} target="_blank">
+            Log In
+          </Button>
+        </div>
       </div>
     </header>
   );

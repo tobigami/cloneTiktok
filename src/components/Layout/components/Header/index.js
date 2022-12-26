@@ -7,7 +7,7 @@ import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 
 // import icon
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
@@ -60,14 +60,11 @@ function Header() {
           </div>
         </Tippy>
         <div className={cx("actions")}>
-          <Button text target="_blank">
+          <Button rightIcon={<FontAwesomeIcon icon={faUpload} />} text>
             Upload
           </Button>
-          <Button round outline target="_blank">
-            Log In
-          </Button>
-          <Button className={cx("custom-login")} target="_blank">
-            Log In
+          <Button rightIcon={<FontAwesomeIcon icon={faUser} />} primary>
+            Login
           </Button>
         </div>
       </div>

@@ -10,8 +10,10 @@ function Button({
   primary = false,
   outline = false,
   round = false,
-  className,
   disabled = false,
+  leftIcon,
+  rightIcon,
+  className,
   text = false,
   size = "medium",
   children,
@@ -45,10 +47,11 @@ function Button({
     { primary, outline, text, disabled, round, [className]: className },
     size
   );
-
   return (
     <Comp className={classes} {...props}>
-      <span>{children}</span>
+      {leftIcon && <span className={cc("leftIcon")}> {leftIcon}</span>}
+      <span className={cc("content")}>{children}</span>
+      {rightIcon && <span className={cc("rightIcon")}>{rightIcon}</span>}
     </Comp>
   );
 }

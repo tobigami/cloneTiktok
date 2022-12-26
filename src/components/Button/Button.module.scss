@@ -64,3 +64,8 @@
   min-width: 250px;
   padding: 14px 20px;
 }
+
+.leftIcon + .content,
+.content + .rightIcon {
+  margin-left: 8px;
+}

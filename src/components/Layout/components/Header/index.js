@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import { Wrapper as WrapperPopper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
+import styles from "./Header.module.scss";
 
 // import icon
-import { faSpinner, faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEllipsisVertical,
+  faSpinner,
+  faUpload,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 // import Tippy
 import Tippy from "@tippyjs/react/headless";
+import Menu from "~/components/Popper/Menu";
 const cx = classNames.bind(styles);
+
+// Component
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
@@ -30,7 +38,7 @@ function Header() {
           <img src={images.logo} alt="TikTok"></img>
         </div>
 
-        {/* UI SEARCH */}
+        {/* UI SEARCH  USE  TIPPY*/}
         <Tippy
           interactive={true}
           visible={searchResult.length > 0}
@@ -59,6 +67,8 @@ function Header() {
             </button>
           </div>
         </Tippy>
+
+        {/* action */}
         <div className={cx("actions")}>
           <Button rightIcon={<FontAwesomeIcon icon={faUpload} />} text>
             Upload
@@ -66,6 +76,12 @@ function Header() {
           <Button rightIcon={<FontAwesomeIcon icon={faUser} />} primary>
             Login
           </Button>
+
+          <Menu>
+            <button className={cx("menu-btn")}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>

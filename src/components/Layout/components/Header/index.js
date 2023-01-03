@@ -9,18 +9,37 @@ import styles from "./Header.module.scss";
 // import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faEarthAsia,
   faEllipsisVertical,
+  faQuestion,
   faSpinner,
   faUpload,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import { faCircleXmark, faKeyboard } from "@fortawesome/free-regular-svg-icons";
 
 // import Tippy
 import Tippy from "@tippyjs/react/headless";
 import Menu from "~/components/Popper/Menu";
 const cx = classNames.bind(styles);
+const MENU_ITEM = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: "English",
+  },
+
+  {
+    icon: <FontAwesomeIcon icon={faQuestion} />,
+    title: "Feedback & questions",
+    to: "/feedback",
+  },
+
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: "Keyboard & Shortcuts",
+  },
+];
 
 // Component
 function Header() {
@@ -77,7 +96,7 @@ function Header() {
             Login
           </Button>
 
-          <Menu>
+          <Menu items={MENU_ITEM}>
             <button className={cx("menu-btn")}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>

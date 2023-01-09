@@ -31,11 +31,13 @@ const MENU_ITEM = [
       title: "language",
       data: [
         {
+          type: "language",
           code: "en",
           title: "English",
         },
 
         {
+          type: "language",
           code: "vi",
           title: "Tiếng Việt",
         },
@@ -63,6 +65,10 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  const handleMenuItem = (menuItem) => {
+    console.log(menuItem);
+  };
   return (
     <header className={cx("wrapper")}>
       <div className={cx("container")}>
@@ -110,7 +116,7 @@ function Header() {
             Login
           </Button>
 
-          <Menu items={MENU_ITEM}>
+          <Menu items={MENU_ITEM} onChange={handleMenuItem}>
             <button className={cx("menu-btn")}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>

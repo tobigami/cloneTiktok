@@ -106,3 +106,27 @@
   padding: 4px;
   cursor: pointer;
 }
+
+// action
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions-icon {
+  background-color: transparent;
+  font-size: 2.2rem;
+  padding: 4px 8px;
+  color: #161823;
+  cursor: pointer;
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+  margin-left: 12px;
+  cursor: pointer;
+}

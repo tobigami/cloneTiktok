@@ -32,9 +32,22 @@ input,
 [tabindex] {
   outline: none;
   border: none;
+  background-color: transparent;
 }
 a[href] {
   display: inline-block;
   text-decoration: none;
   color: var(--text-color);
+}
+// custom tippy theme
+.tippy-box[data-theme~="tomato"] {
+  background-color: tomato;
+  color: yellow;
+  font-weight: 600;
+}
+
+.tippy-box[data-theme~="tomato"][data-placement^="bottom"]
+  > .tippy-arrow::before {
+  color: tomato;
+  border-top-color: tomato;
 }

@@ -9,9 +9,14 @@ import styles from "./Header.module.scss";
 // import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCloudArrowDown,
+  faCoins,
   faEarthAsia,
   faEllipsisVertical,
+  faGear,
+  faMessage,
   faQuestion,
+  faSignOut,
   faSpinner,
   faUpload,
   faUser,
@@ -19,8 +24,10 @@ import {
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCircleXmark, faKeyboard } from "@fortawesome/free-regular-svg-icons";
 
-// import Tippy
-import Tippy from "@tippyjs/react/headless";
+// import TippyHeadless
+import TippyHeadless from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import Menu from "~/components/Popper/Menu";
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
@@ -56,9 +63,36 @@ const MENU_ITEM = [
     title: "Keyboard & Shortcuts",
   },
 ];
+const menu_item = [
+  {
+    icon: <FontAwesomeIcon icon={faUser} />,
+    title: "View Profile",
+    to: "/profile",
+  },
+
+  {
+    icon: <FontAwesomeIcon icon={faCoins} />,
+    title: "Get Coins",
+    to: "/coin",
+  },
+
+  {
+    icon: <FontAwesomeIcon icon={faGear} />,
+    title: "Setting",
+    to: "/setting",
+  },
+  ...MENU_ITEM,
+  {
+    icon: <FontAwesomeIcon icon={faSignOut} />,
+    title: "Log Out",
+    to: "/logout",
+    separate: true,
+  },
+];
 
 // Component
 function Header() {
+  const currentUser = true;
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     setTimeout(() => {
@@ -69,6 +103,7 @@ function Header() {
   const handleMenuItem = (menuItem) => {
     console.log(menuItem);
   };
+
   return (
     <header className={cx("wrapper")}>
       <div className={cx("container")}>
@@ -78,7 +113,7 @@ function Header() {
         </div>
 
         {/* UI SEARCH  USE  TIPPY*/}
-        <Tippy
+        <TippyHeadless
           interactive={true}
           visible={searchResult.length > 0}
           render={(attrs) => (
@@ -105,21 +140,65 @@ function Header() {
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
-        </Tippy>
+        </TippyHeadless>
 
         {/* action */}
         <div className={cx("actions")}>
-          <Button rightIcon={<FontAwesomeIcon icon={faUpload} />} text>
-            Upload
-          </Button>
-          <Button rightIcon={<FontAwesomeIcon icon={faUser} />} primary>
-            Login
-          </Button>
+          {currentUser ? (
+            <>
+              <Tippy
+                delay={[200, 200]}
+                content="upload"
+                placement="bottom"
+                theme="tomato"
+              >
+                <button>
+                  <FontAwesomeIcon
+                    className={cx("actions-icon")}
+                    icon={faCloudArrowDown}
+                  />
+                </button>
+              </Tippy>
 
-          <Menu items={MENU_ITEM} onChange={handleMenuItem}>
-            <button className={cx("menu-btn")}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+              <Tippy
+                delay={[0, 200]}
+                content="message"
+                placement="bottom"
+                theme="tomato"
+              >
+                <button>
+                  <FontAwesomeIcon
+                    className={cx("actions-icon")}
+                    icon={faMessage}
+                  />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button rightIcon={<FontAwesomeIcon icon={faUpload} />} text>
+                Upload
+              </Button>
+              <Button rightIcon={<FontAwesomeIcon icon={faUser} />} primary>
+                Login
+              </Button>
+            </>
+          )}
+          <Menu
+            items={currentUser ? menu_item : MENU_ITEM}
+            onChange={handleMenuItem}
+          >
+            {currentUser ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/888/888863.png"
+                alt="avatar"
+                className={cx("user-avatar")}
+              />
+            ) : (
+              <button className={cx("menu-btn")}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </Menu>
         </div>
       </div>

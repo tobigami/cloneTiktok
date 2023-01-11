@@ -9,12 +9,10 @@ import styles from "./Header.module.scss";
 // import icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCloudArrowDown,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
-  faMessage,
   faQuestion,
   faSignOut,
   faSpinner,
@@ -29,6 +27,10 @@ import TippyHeadless from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import Menu from "~/components/Popper/Menu";
+import Image from "~/components/Image";
+import { MessageIcon } from "~/components/Icon";
+import { InboxIcon } from "~/components/Icon";
+import { UploadIcon } from "~/components/Icon";
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
   {
@@ -146,31 +148,32 @@ function Header() {
         <div className={cx("actions")}>
           {currentUser ? (
             <>
-              <Tippy
-                delay={[200, 200]}
-                content="upload"
-                placement="bottom"
-                theme="tomato"
+              <Button
+                leftIcon={<UploadIcon width="2rem" height="2rem " />}
+                text
               >
-                <button>
-                  <FontAwesomeIcon
-                    className={cx("actions-icon")}
-                    icon={faCloudArrowDown}
-                  />
-                </button>
-              </Tippy>
+                Upload
+              </Button>
 
               <Tippy
-                delay={[0, 200]}
+                delay={[200, 200]}
                 content="message"
                 placement="bottom"
                 theme="tomato"
               >
                 <button>
-                  <FontAwesomeIcon
-                    className={cx("actions-icon")}
-                    icon={faMessage}
-                  />
+                  <MessageIcon width="2.6rem" height="2.6rem" />
+                </button>
+              </Tippy>
+
+              <Tippy
+                delay={[0, 200]}
+                content="inbox"
+                placement="bottom"
+                theme="tomato"
+              >
+                <button>
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
@@ -189,7 +192,7 @@ function Header() {
             onChange={handleMenuItem}
           >
             {currentUser ? (
-              <img
+              <Image
                 src="https://cdn-icons-png.flaticon.com/512/888/888863.png"
                 alt="avatar"
                 className={cx("user-avatar")}

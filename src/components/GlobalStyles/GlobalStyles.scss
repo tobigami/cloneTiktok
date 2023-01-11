@@ -1,5 +1,4 @@
 @import "normalize.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
 :root {
   --primary-color: #fe2c55;
   --default-layout-height: 60px;
@@ -20,11 +19,42 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "ProximaNova", sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   color: var(--text-color);
+}
+
+// font
+@font-face {
+  font-family: ProximaNova;
+  src: url(../../assets/font/Proxima-Nova-Regular.woff2);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(../../assets/font/ProximaNova-Semibold.woff2);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(../../assets/font/Proxima-Nova-Bold.woff2);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Sofiapro;
+  src: url(../../assets/font/sofiapro-medium.woff);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Sofiapro;
+  src: url(../../assets/font/sofiapro-bold.woff2);
+  font-weight: 700;
 }
 
 button,
